@@ -79,7 +79,7 @@ const thunkMiddleware = (store: Store) => (next: (action: Action) => void) => (a
 
 type Thunk = typeof thunkMiddleware
 
-export const loadOffers = () => ({dispatch, getState}: Store) => {
+const loadOffers = () => ({dispatch, getState}: Store) => {
   axios
     .get<Offer[]>(`${BASE_URL}${ApiRoute.Offers}`)
     .then((response) => dispatch(setOffers(response.data)));
@@ -97,7 +97,7 @@ const createStoreWithMiddleware = (middleware: Thunk) => (makeStore: typeof crea
   };
 };
 
-export const store = createStoreWithMiddleware(thunkMiddleware)(createStore);
+const store = createStoreWithMiddleware(thunkMiddleware)(createStore);
 store.dispatch(loadOffers());
 setTimeout(() => {
   console.log(store.getState());

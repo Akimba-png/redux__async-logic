@@ -2,3 +2,4 @@
 
 **Пакет включает в себя:**
 - Кастомную имплементацию Redux и thunk middleware;
+- Создание ассинхронного действия методом createAsyncThunk и rtk slice;
