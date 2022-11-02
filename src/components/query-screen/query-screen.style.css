@@ -1,0 +1,29 @@
+.query-screen {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.query-component__title {
+  text-align: center;
+}
+
+.query-component__list {
+  margin: 0;
+  padding: 15px;
+  list-style: none;
+  border-radius: 10px;
+}
+
+.query-component__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.query-component__item:not(:last-child) {
+  margin-bottom: 5px;
+}

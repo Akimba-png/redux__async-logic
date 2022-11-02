@@ -1,15 +1,12 @@
-import { useAppSelector } from './redux-implements/create-async-thunk';
+import { AsyncThunkScreen } from './components/async-thunk-screen/asynk-thunk-screen';
+import { QueryScreen } from './components/query-screen/query-screen';
 
 function App() {
-  const { offers, isLoading, error } = useAppSelector(state => state.data);
-  if (isLoading) {
-    return (<h1>Loading...</h1>);
-  }
+
   return (
     <>
-      <h1>Hello World!</h1>
-      {error && <h1>{`Something went wrong: ${error}`}</h1>}
-      <p>{`${offers}`}</p>
+      {/* <AsyncThunkScreen /> */}
+      <QueryScreen />
     </>
   );
 }
