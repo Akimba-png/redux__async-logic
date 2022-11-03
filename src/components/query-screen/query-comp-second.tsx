@@ -9,9 +9,9 @@ function QueryComponentSecond(): JSX.Element {
         {data && data.map((offer) => (
           <li
             className="query-component__item"
-            key={offer.location.lat}
+            key={offer.id}
           >
-            <p>{offer.offer.title}</p>
+            <p>{offer.title}</p>
             <div className="query-component__control">
               <button>delete</button>
               <button>update</button>

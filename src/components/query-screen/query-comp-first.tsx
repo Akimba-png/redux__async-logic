@@ -9,9 +9,9 @@ function QueryComponentFirst(): JSX.Element {
         {data && data.map((offer) => (
           <li
             className="query-component__item"
-            key={offer.location.lat}
+            key={offer.id}
           >
-            <p>{offer.offer.title}</p>
+            <p>{offer.title}</p>
           </li>
         ))}
       </ul>

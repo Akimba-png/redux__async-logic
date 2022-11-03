@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://22.javascript.pages.academy/keksobooking';
+export const BASE_URL = 'http://localhost:5000';
 export enum ApiRoute {
-  Offers = '/data',
+  Offers = '/offers',
 }

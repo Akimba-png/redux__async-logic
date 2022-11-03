@@ -2,4 +2,20 @@
 
 **Пакет включает в себя:**
 - Кастомную имплементацию Redux и thunk middleware;
-- Создание ассинхронного действия методом createAsyncThunk и rtk slice;
+- Загрузка данных с сервера методом createAsyncThunk и RTK slice;
+- Получение и мутация данных с использованием RTK Query;
+
+## Технологический стек:
+- React;
+- Typescript;
+- Redux, RTK, RTK Query;
+- Json-server (эмуляция работы с сервером);
+
+## Сценарии:
+
+### Запуск проекта:
+
+```bash
+npm run dev
+```
+
