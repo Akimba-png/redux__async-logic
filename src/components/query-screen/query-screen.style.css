@@ -1,7 +1,8 @@
 .query-screen {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 25px;
+  padding: 25px;
 }
 
 .query-component__title {
@@ -10,7 +11,8 @@
 
 .query-component__list {
   margin: 0;
-  padding: 15px;
+  margin-bottom: 15px;
+  padding: 0;
   list-style: none;
   border-radius: 10px;
 }
@@ -26,4 +28,9 @@
 
 .query-component__item:not(:last-child) {
   margin-bottom: 5px;
+}
+
+.query-component__input {
+  margin: 0 5px;
+  padding: 3px 5px;
 }
