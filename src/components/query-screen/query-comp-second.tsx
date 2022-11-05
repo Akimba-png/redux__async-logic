@@ -1,19 +1,14 @@
 import { MouseEvent, useState, ChangeEvent } from 'react';
 import { Offer } from '../../types/data';
-import { useDeleteOfferMutation, useLoadOffersQuery, useUpdateOfferMutation } from './../../redux-implements/rtk-query';
+import DeleteButton from './delete-button';
+import { useLoadOffersQuery, useUpdateOfferMutation } from './../../redux-implements/rtk-query';
 
 function QueryComponentSecond(): JSX.Element {
   const [ isModalOpen, setModalStatus ] = useState<boolean>(false);
   const [ offerToUpdate, setOfferToUpdate ] = useState<Offer>({} as Offer);
   const [ value, setValue ] = useState<string>('');
   const { data } = useLoadOffersQuery('');
-  const [ deleteOffer ] = useDeleteOfferMutation();
   const [ updateOffer, {isLoading} ] = useUpdateOfferMutation();
-
-  const handleDeleteOffer = (id: number) => async (evt: MouseEvent) => {
-    evt.preventDefault();
-    await deleteOffer(id);
-  };
 
   const handleUpdateOffer = (offer: Offer) => () => {
     setModalStatus(true);
@@ -41,7 +36,7 @@ function QueryComponentSecond(): JSX.Element {
           >
             <p>{offer.title}</p>
             <div className="query-component__control">
-              <button onClick={handleDeleteOffer(offer.id)}>delete</button>
+              <DeleteButton id={offer.id} />
               <button onClick={handleUpdateOffer(offer)}>update</button>
             </div>
           </li>
