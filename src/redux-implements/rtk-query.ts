@@ -15,11 +15,26 @@ const offerApi = createApi({
     addOffer: build.mutation<Offer, Offer>({
       query: (offer) => ({
         url: ApiRoute.Offers,
-        method: "POST",
+        method: 'POST',
         body: offer,
       }),
       invalidatesTags: ['Offer'],
-    })
+    }),
+    deleteOffer: build.mutation<Offer, number>({
+      query: (id) => ({
+        url: `${ApiRoute.Offers}/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Offer'],
+    }),
+    updateOffer: build.mutation<Offer, Offer>({
+      query: (offer) => ({
+        url: `${ApiRoute.Offers}/${offer.id}`,
+        method: 'PUT',
+        body: offer,
+      }),
+      invalidatesTags: ['Offer'],
+    }),
   }),
 });
 
@@ -30,4 +45,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(offerApi.middleware),
 });
 
-export const { useLoadOffersQuery, useAddOfferMutation } = offerApi;
+export const {
+  useLoadOffersQuery,
+  useAddOfferMutation,
+  useDeleteOfferMutation,
+  useUpdateOfferMutation,
+} = offerApi;
