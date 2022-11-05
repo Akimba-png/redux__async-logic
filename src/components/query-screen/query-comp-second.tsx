@@ -8,7 +8,7 @@ function QueryComponentSecond(): JSX.Element {
   const [ value, setValue ] = useState<string>('');
   const { data } = useLoadOffersQuery('');
   const [ deleteOffer ] = useDeleteOfferMutation();
-  const [ updateOffer ] = useUpdateOfferMutation();
+  const [ updateOffer, {isLoading} ] = useUpdateOfferMutation();
 
   const handleDeleteOffer = (id: number) => async (evt: MouseEvent) => {
     evt.preventDefault();
@@ -62,7 +62,7 @@ function QueryComponentSecond(): JSX.Element {
               autoFocus
             />
           </label>
-        <button type="button" onClick={handleModalSubmit}>Изменить</button>
+        <button type="button" onClick={handleModalSubmit}>{isLoading ? 'updating' : 'update'}</button>
       </form>
         </div>
       </>
