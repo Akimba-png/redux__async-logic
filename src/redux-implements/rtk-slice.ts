@@ -1,31 +1,8 @@
-import { configureStore, createSlice, PayloadAction, Store } from '@reduxjs/toolkit';
-import axios, { AxiosInstance } from 'axios';
+import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { ThunkAction } from 'redux-thunk'
-
-type User = {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-};
+import { ThunkAction } from 'redux-thunk';
+import axios from 'axios';
+import { User } from './../types/user';
 
 interface InitialState {
   users: User[];
@@ -55,12 +32,11 @@ const userSlice = createSlice({
   },
 });
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     user: userSlice.reducer,
   },
 });
-
 
 const { setUsers, setLoading, setError } = userSlice.actions;
 
@@ -71,14 +47,14 @@ type AppAction =
 
 type AppDispatch = typeof store.dispatch
 type RootState = ReturnType<typeof store.getState>
-export const useAppDispatch: AppDispatch = useDispatch();
+export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-type AppThunkAction = ThunkAction<void, RootState, AxiosInstance, AppAction>
+type AppThunkAction = ThunkAction<void, RootState, unknown, AppAction>
 
-const loadUsers = (): AppThunkAction => (dispatch) => {
+export const loadUsers = (): AppThunkAction => (dispatch) => {
   dispatch(setLoading(true))
   axios
     .get<User[]>('https://jsonplaceholder.typicode.com/users')
     .then((response) => dispatch(setUsers(response.data)))
-    .then(() => dispatch(setLoading(false)))
+    .then(() => dispatch(setLoading(false)));
 };

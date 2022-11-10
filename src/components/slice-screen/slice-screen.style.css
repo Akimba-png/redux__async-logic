@@ -1,0 +1,15 @@
+.slice-comp {
+  padding: 10px;
+}
+
+.slice-comp__title {
+  text-align: center;
+}
+
+.slice-comp__list {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  margin: 0 auto;
+  list-style: none;
+}
